@@ -1,5 +1,4 @@
 "use client"
-import Head from "next/head";
 import { supabase } from "@/utils/supabase";
 import { useState } from "react";
 
