@@ -20,6 +20,7 @@ export default function Login(){
         throw signInError;
       }
       await router.push("/");
+      router.refresh();
     }catch{
       alert('メールアドレスまたはパスワードが間違っています');
     }

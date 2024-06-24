@@ -2,6 +2,7 @@
 import { supabase } from "@/utils/supabase";
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
     const [currentUser, setcurrentUser] = useState('');
@@ -26,6 +27,15 @@ const Header = () => {
     getCurrentUser()
   },[])
 
+  const doLogout = async () => {
+    const router = useRouter();
+    // supabaseに用意されているログアウトの関数
+    const { error } = await supabase.auth.signOut()
+    if (error) throw new Error(error.message)
+    // ログアウトを反映させるためにリロードさせる
+    router.refresh();
+  }
+
   return (
     <header className='py-5 px-10 border-b flex justify-between item-center bg-slate-900'>
         <div className='flex '>
@@ -48,7 +58,9 @@ const Header = () => {
             <div className='flex justify-end text-slate-200'>
                 <div className='transform translate-y-3'>{ currentUser } でログインしています。</div>
             <nav className='text-sm font-medium bg-red-400 px-3 py-3 rounded-md mx-2'>
-            <Link href="/logout">
+            <Link href="/logout" onClick={()=>{
+              doLogout();
+            }}>
                 ログアウト
             </Link>
             </nav>
