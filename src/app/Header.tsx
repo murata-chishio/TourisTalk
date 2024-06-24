@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 
 const Header = () => {
+    const router = useRouter();
     const [currentUser, setcurrentUser] = useState('');
 
     // 現在ログインしているユーザーを取得する処理
@@ -28,7 +29,6 @@ const Header = () => {
   },[])
 
   const doLogout = async () => {
-    const router = useRouter();
     // supabaseに用意されているログアウトの関数
     const { error } = await supabase.auth.signOut()
     if (error) throw new Error(error.message)
