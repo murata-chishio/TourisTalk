@@ -14,7 +14,7 @@ const DeleteButton = ({ id }: DeleteButtonProps) => {
 
         const API_URL = process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL;
 
-        await fetch(`https://${API_URL}/api/${id}`, { method: "DELETE", })
+        await fetch(`https://${API_URL}/api/${id}/`, { method: "DELETE", })
 
         router.push("/");
         router.refresh();
