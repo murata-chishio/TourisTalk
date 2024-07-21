@@ -1,5 +1,6 @@
 "use client";
 
+import ImageApp from '@/app/components/imageApp';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
@@ -48,8 +49,15 @@ const CreateSpot = () => {
                 <input type="text" className='shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none' {...register('location')}/>
             </div>
             <div className="mb-4">
-                <label className='text-gray-700 text-sm fontbold mb-2'>画像URL</label>
-                <input type="text" className='shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none' {...register('image')}/>
+                <label className='text-gray-700 text-sm fontbold mb-2'>画像</label> 
+                <br/>
+                <div className="flex-1 w-full flex flex-col items-center">
+                    <ImageApp />
+                </div>
+{/*                <input type="text" className='shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none' {...register('image')}/>   */ }
+            </div>
+            <div>
+                
             </div>
             <div className="mb-4">
                 <label className='text-gray-700 text-sm fontbold mb-2'>説明</label>
